@@ -1,5 +1,7 @@
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+# Health Insurance Cost Analysis
+
 📌 Project Overview
 
 This project investigates an insurance dataset to understand the key factors that influence medical insurance charges. The dataset includes variables such as age, sex, BMI, smoking status, and region. Using Python in Jupyter Notebook, I conducted a detailed exploratory data analysis (EDA) to explore correlations, uncover patterns, and visualise the relationships between these variables. The aim was to draw meaningful insights that could inform decision-making in pricing strategies or risk modelling in the insurance industry. The analysis combines statistical techniques and visual storytelling through a range of plots and a correlation heatmap.
@@ -49,7 +51,7 @@ These insights demonstrate how lifestyle and demographic factors play a crucial 
 
 🚧 Challenges and Solutions
 
-📁 FileNotFoundError and Path Confusion
+1- FileNotFoundError and Path Confusion
 
 When attempting to run all cells in the Jupyter Notebook, inconsistent file path errors (FileNotFoundError) would occur. This was due to how the notebook was launched and how relative paths were resolved.
 
@@ -61,7 +63,7 @@ os.chdir('/Users/nasraibrahim/Documents/vscode-projects')
 
 This ensured that the correct directory structure was recognised regardless of how the notebook was opened or run, allowing the data file to be located consistently.
 
-🧼 Data Cleaning and Preparation
+2-  Data Cleaning and Preparation
 
 The dataset required extensive cleaning, including handling missing values, correcting data types, and encoding categorical variables. Executing this in the terminal using Python was often slow and error-prone.
 
@@ -69,7 +71,7 @@ The dataset required extensive cleaning, including handling missing values, corr
 
 I used an iterative approach — checking data structure with .info() and .columns, converting data types using .astype() and pd.to_numeric(), and testing changes step-by-step to avoid further errors. This process ensured the cleaned dataset was accurate and ready for analysis.
 
-📊 Plotly and Visualisation Issues
+3- Plotly and Visualisation Issues
 
 While working with Plotly for interactive visualisations, I encountered rendering problems, particularly when moving from Jupyter to GitHub, where interactive charts were not supported.
 
@@ -77,7 +79,7 @@ While working with Plotly for interactive visualisations, I encountered renderin
 
 I resolved this by installing and configuring kaleido to export Plotly visuals as static .png files, which allowed them to be displayed correctly on GitHub. This adjustment maintained the quality of the visual output across platforms.
 
-⚙️ Virtual Environment and Package Installation
+4- Virtual Environment and Package Installation
 
 Setting up the .venv environment and installing necessary packages such as nbformat, ipykernel, and kaleido led to multiple dependency conflicts and installation errors.
 
