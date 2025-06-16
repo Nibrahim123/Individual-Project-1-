@@ -1,75 +1,116 @@
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Template Instructions
+📌 Project Overview
 
-Welcome,
+This project investigates an insurance dataset to understand the key factors that influence medical insurance charges. The dataset includes variables such as age, sex, BMI, smoking status, and region. Using Python in Jupyter Notebook, I conducted a detailed exploratory data analysis (EDA) to explore correlations, uncover patterns, and visualise the relationships between these variables. The aim was to draw meaningful insights that could inform decision-making in pricing strategies or risk modelling in the insurance industry. The analysis combines statistical techniques and visual storytelling through a range of plots and a correlation heatmap.
 
-This is the Code Institute student template for the Data Analytics capstone project. We have preinstalled all of the tools you need to get started. It's perfectly okay to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
+🧼 Data Cleaning
 
-You can safely delete the Template Instructions section of this README.md file and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
+Before the analysis could begin, the original dataset required significant cleaning and restructuring. This involved:
 
-## How to use this repo
+* Handling missing values
 
-1. Use this template to create your GitHub project repo. Click the Use this template button, then click Create a new repository.
+* Converting categorical variables into appropriate formats
 
-1. Copy the URL of your repository to your clipboard.
+* Ensuring numerical data consistency and accuracy
 
-1. In VS Code, select File - Open Folder.
+All cleaning was performed using Python scripts via the terminal. The cleaned dataset was saved as cleaned_insurance.csv and stored in a structured data/ folder. This ensured a reproducible and well-organised workflow, ready for analysis.
 
-1. Select your vscode-projects folder, then click the Select Folder button on Windows, or Open button on Mac.
+📊 Visualisations Conducted
 
-1. From the top menu in VS Code, select Terminal > New Terminal to open the terminal.
+✅ Scatter Plot
 
-1. In the terminal, type git clone followed by the URL of your GitHub repository. Then hit Enter. This command will download all the files in your GitHub repository into your vscode-projects folder.
+* Insurance charges vs. age, colour-coded by smoking status
 
-1. In VS Code, select File > Open Folder again.
+✅ Box Plot
 
-1. This time, navigate to and select the folder for the project you just downloaded. Then, click Select Folder.
+* Distribution of insurance charges across genders
 
-1. A virtual environment is necessary when working with Python projects to ensure each project's dependencies are kept separate from each other. You need to create your virtual environment, also called a venv, and then ensure that it is activated any time you return to your workspace.
-Click the gear icon in the lower left-hand corner of the screen to open the Manage menu and select Command Palette to open the VS Code command palette.
+✅ Bar Chart
 
-1. In the command palette, type: create environment and select Python: Create Environment…
+* Comparison of average insurance charges between smokers and non-smokers
 
-1. Choose Venv from the dropdown list.
+✅ Heatmap
 
-1. Choose the Python version you installed earlier. Currently, we recommend Python 3.12.8
+* Correlation matrix showing relationships among all numerical features
 
-1. DO NOT click the box next to requirements.txt, as you need to do more steps before you can install your dependencies. Click OK.
+These visualisations helped to highlight key trends and provide an intuitive understanding of the data distribution and relationships.
 
-1. You will see a .venv folder appear in the file explorer pane to show that the virtual environment has been created.
+💡 Insights and Findings
+* Smoking is the most significant contributor to higher insurance charges
 
-1. Important: Please add the .venv to your .gitignore file
+* Insurance costs increase with age, particularly for smokers
 
-1. Return to the terminal by clicking on the TERMINAL tab or click on the Terminal menu and choose New Terminal if no terminal is currently open.
+* Gender shows visible distribution differences, but its direct impact is less significant than smoking or BMI
 
-1. In the terminal, use the command below to install your dependencies. This may take several minutes.
- `pip3 install -r requirements.txt`
+* The heatmap revealed strong positive correlations between smoking, BMI, and charges
 
-1. Open the jupyter_notebooks directory, and click on the notebook you want to open.
+These insights demonstrate how lifestyle and demographic factors play a crucial role in insurance pricing.
 
-1. Click the kernel button and choose Python Environments.
+🚧 Challenges and Solutions
 
-Note that the kernel says Python 3.12.2 as it inherits from the workspace, so it will be Python-3.12.2 as installed by our template. To confirm this, you can use `! python --version` in a notebook code cell.
+📁 FileNotFoundError and Path Confusion
 
-## Cloud IDE Reminders
+When attempting to run all cells in the Jupyter Notebook, inconsistent file path errors (FileNotFoundError) would occur. This was due to how the notebook was launched and how relative paths were resolved.
 
-To log into the Heroku toolbelt CLI:
+✅ Solution:
+I used Python’s os module to check and manually set the working directory:
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In the terminal, run `heroku_config`
-5. Paste in your API key when asked
+import os  
+os.chdir('/Users/nasraibrahim/Documents/vscode-projects')
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+This ensured that the correct directory structure was recognised regardless of how the notebook was opened or run, allowing the data file to be located consistently.
 
-* Set the runtime.txt Python version to a [Heroku-22](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
+🧼 Data Cleaning and Preparation
 
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+The dataset required extensive cleaning, including handling missing values, correcting data types, and encoding categorical variables. Executing this in the terminal using Python was often slow and error-prone.
+
+✅ Solution:
+
+I used an iterative approach — checking data structure with .info() and .columns, converting data types using .astype() and pd.to_numeric(), and testing changes step-by-step to avoid further errors. This process ensured the cleaned dataset was accurate and ready for analysis.
+
+📊 Plotly and Visualisation Issues
+
+While working with Plotly for interactive visualisations, I encountered rendering problems, particularly when moving from Jupyter to GitHub, where interactive charts were not supported.
+
+✅ Solution:
+
+I resolved this by installing and configuring kaleido to export Plotly visuals as static .png files, which allowed them to be displayed correctly on GitHub. This adjustment maintained the quality of the visual output across platforms.
+
+⚙️ Virtual Environment and Package Installation
+
+Setting up the .venv environment and installing necessary packages such as nbformat, ipykernel, and kaleido led to multiple dependency conflicts and installation errors.
+
+✅ Solution:
+
+By carefully managing the virtual environment, reinstalling problematic packages, and consulting documentation and AI tools, I was able to stabilise the environment. This allowed for seamless notebook execution, data cleaning, and visual exports.
+
+🤖 Tools That Helped
+
+To overcome these challenges, I made extensive use of ChatGPT and GitHub Copilot. These tools offered real-time support in debugging, writing clean code, resolving path issues, and adjusting visualisation outputs. With their help, I was able to build a consistent, reproducible workflow that could run smoothly both locally and on GitHub.
+
+📈 Conclusion and Next Steps
+
+This project demonstrates the value of exploratory data analysis in revealing patterns and relationships within structured datasets. It also highlights the importance of clean project organisation and environment setup to ensure reliable and reproducible work.
+
+Potential next steps include:
+
+* Building predictive models to estimate charges based on input features
+
+* Applying regression analysis or machine learning techniques
+
+* Conducting hypothesis testing for deeper statistical insight
+
+* Further feature engineering and data enrichment to improve model performance
+
+📚 References
+
+Kaggle: Insurance Dataset
+
+ChatGPT (OpenAI) — for coding support, debugging, and structural guidance
+
+GitHub Copilot — for auto-completion and efficient script writing
+
+pandas Documentation — for data cleaning and manipulation
+
+matplotlib & seaborn — for creating professional visualisations
