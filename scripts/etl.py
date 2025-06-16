@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 
+
 # === Stage 1: Load the data from CSV file ===
 def load_data(path='data/insurance.csv'):
     """
@@ -10,6 +11,7 @@ def load_data(path='data/insurance.csv'):
     if not os.path.exists(path):
         raise FileNotFoundError(f"File not found: {path}")
     return pd.read_csv(path)
+
 
 # === BMI Category Function ===
 def bmi_category(bmi):
@@ -24,6 +26,7 @@ def bmi_category(bmi):
         return 'Overweight'
     else:
         return 'Obese'
+
 
 # === Stage 2: Transform and clean the data ===
 def transform_data(df):
@@ -47,12 +50,14 @@ def transform_data(df):
 
     return df
 
+
 # === Stage 3: Save cleaned data ===
 def save_cleaned_data(df, path='data/cleaned_insurance.csv'):
     """
     Writes the cleaned DataFrame to a CSV file without the index.
     """
     df.to_csv(path, index=False)
+
 
 # === Stage 4: Quick data analysis ===
 def analyze_data(df):
@@ -67,6 +72,7 @@ def analyze_data(df):
 
     print("\n=== Correlation Matrix ===")
     print(df.corr(numeric_only=True))
+
 
 # === Run ETL if script is executed directly ===
 if __name__ == "__main__":
